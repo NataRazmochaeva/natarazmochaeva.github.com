@@ -159,85 +159,133 @@ function init()
 	ball1.metallic = true;
 	ball1.position.set(0,30,0);
 	ball1.rotation.y = Math.PI;
-	ball1.rotation.x = Math.PI / 8;
+	ball1.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009900 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball2 = new THREE.Mesh( geometry, material );
 	ball2.metallic = true;
 	ball2.position.set(100,30,0);
+	ball2.rotation.y = Math.PI;
+	ball2.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x000099 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/12ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball3 = new THREE.Mesh( geometry, material );
 	ball3.metallic = true;
 	ball3.position.set(-100,30,0);
+	ball3.rotation.y = Math.PI;
+	ball3.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x000099 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/11ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	;
 	var ball4 = new THREE.Mesh( geometry, material );
 	ball4.metallic = true;
 	ball4.position.set(-200,30,0);
+	ball4.rotation.y = Math.PI;
+	ball4.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x000099 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/15ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball5 = new THREE.Mesh( geometry, material );
 	ball5.metallic = true;
 	ball5.position.set(200,30,0);
+	ball5.rotation.y = Math.PI;
+	ball5.rotation.x = -Math.PI / 8;
 		
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/9ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball6 = new THREE.Mesh( geometry, material );
 	ball6.metallic = true;
 	ball6.position.set(50,30,88);
+	ball6.rotation.y = Math.PI;
+	ball6.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/7ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball7 = new THREE.Mesh( geometry, material );
 	ball7.metallic = true;
 	ball7.position.set(-50,30,88);
+	ball7.rotation.y = Math.PI;
+	ball7.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/6ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball8 = new THREE.Mesh( geometry, material );
 	ball8.metallic = true;
 	ball8.position.set(-150,30,88);
+	ball8.rotation.y = Math.PI;
+	ball8.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/10ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );	
 	var ball9 = new THREE.Mesh( geometry, material );
 	ball9.metallic = true;
 	ball9.position.set(150,30,88);
+	ball9.rotation.y = Math.PI;
+	ball9.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x669911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/8ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball10 = new THREE.Mesh( geometry, material );
 	ball10.metallic = true;
 	ball10.position.set(0,30,176);
+	ball10.rotation.y = Math.PI;
+	ball10.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x669911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/4ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball11 = new THREE.Mesh( geometry, material );
 	ball11.metallic = true;
 	ball11.position.set(-100,30,176);
+	ball11.rotation.y = Math.PI;
+	ball11.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x669911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/5ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball12 = new THREE.Mesh( geometry, material );
 	ball12.metallic = true;
 	ball12.position.set(100,30,176);
+	ball12.rotation.y = Math.PI;
+	ball12.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x669911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/3ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball13 = new THREE.Mesh( geometry, material );
 	ball13.metallic = true;
 	ball13.position.set(50,30,264);
+	ball13.rotation.y = Math.PI;
+	ball13.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x009911 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/2ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball14 = new THREE.Mesh( geometry, material );
 	ball14.metallic = true;
 	ball14.position.set(-50,30,264);
+	ball14.rotation.y = Math.PI;
+	ball14.rotation.x = -Math.PI / 8;
+	
+	geometry = new THREE.SphereGeometry( 50, 64, 30  );
+	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
+	var ball15 = new THREE.Mesh( geometry, material );
+	ball15.metallic = true;
+	ball15.position.set(0,30,352);
+	ball15.rotation.y = Math.PI;
+	ball15.rotation.x = -Math.PI / 8;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	material = new THREE.MeshPhongMaterial( { color: 0xfffff1 } );
@@ -245,11 +293,7 @@ function init()
 	whiteball.metallic = true;
 	whiteball.position.set(-300,30,264);
 	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x660011 } );
-	var ball15 = new THREE.Mesh( geometry, material );
-	ball15.metallic = true;
-	ball15.position.set(0,30,352);
+	
 	
 	var cylindergeometry = new THREE.CylinderGeometry(5, 8, 500, 512, false);
 	var cylindermaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
