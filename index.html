@@ -123,7 +123,7 @@ function init()
 	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, color: 0x000055  } );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, color: 0x2F4F4F  } );
 	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere.position.set(-50,30,-100);
 	mirrorSphereCamera.position = mirrorSphere.position;
@@ -132,13 +132,13 @@ function init()
 	mirrorSphereCamera1 = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera1.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera1 );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, color: 0x550000 } );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, color: 0x8B0000 } );
 	mirrorSphere1 = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere1.position.set(-150,30,-100);
 	mirrorSphereCamera1.position = mirrorSphere1.position;
 	scene.add(mirrorSphere1);
  
-	var turn_angle_x = -Math.PI / 6;
+	var turn_angle_x = -Math.PI / 4;
 	var turn_angle_y = Math.PI;
 	
 	var geometry,  material;
