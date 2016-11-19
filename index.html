@@ -83,21 +83,22 @@ function init()
 	light1.position.set(0,1000,500);
 	scene.add(light1);
 	// FLOOR
-	/*
+	
 	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 	floorTexture.repeat.set( 10, 10 );
 	var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side:THREE.BackSide } );
 	
 	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
+	/*
 	var floorMaterial = new THREE.MeshBasicMaterial({color: 0xcccccc});
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
 	scene.add(floor);
 	*/
-	var floorGeometry = new THREE.PlaneGeometry(20000,20000);
-	var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
+	//var floorGeometry = new THREE.PlaneGeometry(20000,20000);
+	//var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	//floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
