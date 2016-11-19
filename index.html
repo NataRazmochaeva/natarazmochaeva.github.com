@@ -106,7 +106,7 @@ function init()
 	scene.add(floor);
 	
 	// SKYBOX/FOG
-	/*
+	
 	var materialArray = [];
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xpos.png' ) }));
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xneg.png' ) }));
@@ -118,14 +118,15 @@ function init()
 	   materialArray[i].side = THREE.BackSide;
 	var skyboxMaterial = new THREE.MeshFaceMaterial( materialArray );
 	//var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000, 1, 1, 1 );
-	var skyBoxGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );
+	var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000 );
 	var skybox = new THREE.Mesh( skyboxGeom, skyboxMaterial );
 	scene.add( skybox );	
-	*/
-	var skyBoxGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );
+	/*
+	var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000 );
 	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
-	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
+	var skyBox = new THREE.Mesh( skyboxGeom, skyBoxMaterial );
 	scene.add(skyBox);
+	*/
 	////////////
 	// CUSTOM //
 	////////////
