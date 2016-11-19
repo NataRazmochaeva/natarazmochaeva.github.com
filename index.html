@@ -37,8 +37,8 @@ var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
 
 // custom global variables
-var mirrorCube, mirrorCubeCamera; // for mirror material
 var mirrorSphere, mirrorSphereCamera; // for mirror material
+var mirrorSphere1, mirrorSphereCamera1; // for mirror material
 
 init();
 animate();
@@ -83,22 +83,21 @@ function init()
 	light1.position.set(0,1000,500);
 	scene.add(light1);
 	// FLOOR
-	
-	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.png' );
+	/*
+	var floorTexture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.jpg' );
 	floorTexture.wrapS = floorTexture.wrapT = THREE.RepeatWrapping; 
 	floorTexture.repeat.set( 10, 10 );
 	var floorMaterial = new THREE.MeshBasicMaterial( { map: floorTexture, side:THREE.BackSide } );
 	
 	var floorGeometry = new THREE.PlaneGeometry(1000, 1000, 10, 10);
-	/*
 	var floorMaterial = new THREE.MeshBasicMaterial({color: 0xcccccc});
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
 	scene.add(floor);
 	*/
-	//var floorGeometry = new THREE.PlaneGeometry(20000,20000);
-	//var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
+	var floorGeometry = new THREE.PlaneGeometry(20000,20000);
+	var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	//floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
@@ -107,7 +106,7 @@ function init()
 	scene.add(floor);
 	
 	// SKYBOX/FOG
-	
+	/*
 	var materialArray = [];
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xpos.png' ) }));
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xneg.png' ) }));
@@ -121,28 +120,19 @@ function init()
 	var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000, 1, 1, 1 );
 	var skybox = new THREE.Mesh( skyboxGeom, skyboxMaterial );
 	scene.add( skybox );	
-	/*
+	*/
 	var skyBoxGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );
 	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
 	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
-	scene.add(skyBox);*/
+	scene.add(skyBox);
 	////////////
 	// CUSTOM //
 	////////////
-	/**/
-	var cubeGeom = new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
-	mirrorCubeCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
-	mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
-	scene.add( mirrorCubeCamera );
-	var mirrorCubeMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorCubeCamera.renderTarget } );
-	mirrorCube = new THREE.Mesh( cubeGeom, mirrorCubeMaterial );
-	mirrorCube.position.set(-150,30,-100);
-	mirrorCubeCamera.position = mirrorCube.position;
-	scene.add(mirrorCube);	
 	
 	var sphereGeom =  new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
+	
 	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
-	mirrorCubeCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+	mirrorSphereCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera );
 	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget } );
 	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
@@ -150,10 +140,20 @@ function init()
 	mirrorSphereCamera.position = mirrorSphere.position;
 	scene.add(mirrorSphere);
  
+	mirrorSphereCamera1 = new THREE.CubeCamera( 0.1, 5000, 512 );
+	mirrorSphereCamera1.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
+	scene.add( mirrorSphereCamera1 );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget } );
+	mirrorSphere1 = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
+	mirrorSphere1.position.set(-150,30,-100);
+	mirrorSphereCamera1.position = mirrorSphere1.position;
+	scene.add(mirrorSphere1);
+ 
 	var geometry,  material;
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	//material = new THREE.MeshPhongMaterial( { color: 0x990000 } );
-	material = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
+	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball1 = new THREE.Mesh( geometry, material );
 	ball1.metallic = true;
 	ball1.position.set(0,30,0);
@@ -321,13 +321,13 @@ function render()
 	//    and apply it to the surface.
 	// need to hide surface before and after so that it does not
 	//    "get in the way" of the camera
-	mirrorCube.visible = false;
-	mirrorCubeCamera.updateCubeMap( renderer, scene );
-	mirrorCube.visible = true;
-
 	mirrorSphere.visible = false;
 	mirrorSphereCamera.updateCubeMap( renderer, scene );
 	mirrorSphere.visible = true;
+
+	mirrorSphere1.visible = false;
+	mirrorSphereCamera1.updateCubeMap( renderer, scene );
+	mirrorSphere1.visible = true;
 	
 	renderer.render( scene, camera );
 }
