@@ -96,7 +96,7 @@ function init()
 	floor.rotation.x = Math.PI / 2;
 	scene.add(floor);
 	*/
-	var floorGeometry = new THREE.PlaneGeometry(20000,20000);
+	var floorGeometry = new THREE.PlaneGeometry(1000,1000);
 	var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	//floor.position.y = -0.5;
@@ -153,13 +153,12 @@ function init()
  
 	var geometry,  material;
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	//material = new THREE.MeshPhongMaterial( { color: 0x990000 } );
 	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
 	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball1 = new THREE.Mesh( geometry, material );
 	ball1.metallic = true;
 	ball1.position.set(0,30,0);
-	//ball1.rotation.x = Math.PI / 2;
+	ball1.rotation.x = Math.PI / 2;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	material = new THREE.MeshPhongMaterial( { color: 0x009900 } );
