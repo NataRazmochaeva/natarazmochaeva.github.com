@@ -154,7 +154,7 @@ function init()
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	//material = new THREE.MeshPhongMaterial( { color: 0x990000 } );
 	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
-	//texture.rotation.x = Math.PI / 2;
+	texture.rotation.x = Math.PI / 2;
 	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var ball1 = new THREE.Mesh( geometry, material );
 	ball1.metallic = true;
