@@ -151,8 +151,8 @@ function init()
  
 	var geometry,  material;
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0x990000 } );
-	//material = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
+	//material = new THREE.MeshPhongMaterial( { color: 0x990000 } );
+	material = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
 	var ball1 = new THREE.Mesh( geometry, material );
 	ball1.metallic = true;
 	ball1.position.set(0,30,0);
