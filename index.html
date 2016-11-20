@@ -87,7 +87,7 @@ function init()
 	scene.add(light);
 	var light1 = new THREE.PointLight(0xffffff);
 	light1.position.set(0,1000,300);
-	light1.receiveShadow = true;
+	//light1.receiveShadow = true;
 	scene.add(light1);
 	
 	// FLOOR
@@ -112,16 +112,10 @@ function init()
 	for (var i = 0; i < 6; i++)
 	   materialArray[i].side = THREE.BackSide;
 	var skyboxMaterial = new THREE.MeshFaceMaterial( materialArray );
-	//var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000, 1, 1, 1 );
 	var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000 );
 	var skybox = new THREE.Mesh( skyboxGeom, skyboxMaterial );
 	scene.add( skybox );	
-	/*
-	var skyboxGeom = new THREE.CubeGeometry( 5000, 5000, 5000 );
-	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
-	var skyBox = new THREE.Mesh( skyboxGeom, skyBoxMaterial );
-	scene.add(skyBox);
-	*/
+
 	////////////
 	// CUSTOM //
 	////////////
@@ -293,8 +287,7 @@ function init()
 	var whiteball = new THREE.Mesh( geometry, material );
 	whiteball.metallic = true;
 	whiteball.position.set(-300,30,264);
-	
-	
+		
 	var cylindergeometry = new THREE.CylinderGeometry(5, 8, 500, 512, false);
 	var cylindermaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
 	cue = new THREE.Mesh(cylindergeometry, cylindermaterial);
@@ -315,7 +308,7 @@ function init()
 	cue_top2.rotation.x = Math.PI / 2;
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
-	
+	/*
 	ball1.castShadow = true;
 	ball2.castShadow = true;
 	ball3.castShadow = true;
@@ -362,7 +355,7 @@ function init()
 	cue.castShadow = true;
 	cue_top1.castShadow = true;
 	cue_top2.castShadow = true;
-	
+	*/
 	scene.add(ball1);
 	scene.add(ball2);
 	scene.add(ball3);
