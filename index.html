@@ -123,7 +123,8 @@ function init()
 	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, color: 0x2F4F4F  } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/redball.png' );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, map: texture } );
 	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere.position.set(-50,30,-100);
 	mirrorSphereCamera.position = mirrorSphere.position;
@@ -132,7 +133,8 @@ function init()
 	mirrorSphereCamera1 = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera1.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera1 );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, color: 0x8B0000 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/grayball.png' );
+	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, map: texture } );
 	mirrorSphere1 = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere1.position.set(-150,30,-100);
 	mirrorSphereCamera1.position = mirrorSphere1.position;
@@ -278,7 +280,8 @@ function init()
 	ball15.rotation.x = turn_angle_x;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	material = new THREE.MeshPhongMaterial( { color: 0xfffff1 } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture } );
 	var whiteball = new THREE.Mesh( geometry, material );
 	whiteball.metallic = true;
 	whiteball.position.set(-300,30,264);
