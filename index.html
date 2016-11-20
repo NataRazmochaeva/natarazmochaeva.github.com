@@ -155,8 +155,8 @@ function init()
 	ball1.position.set(0,30,0);
 	ball1.rotation.y = turn_angle_y;
 	ball1.rotation.x = turn_angle_x;
-	ball1.castShadow = true;
-	ball1.receiveShadow = true;
+	//ball1.castShadow = true;
+	//ball1.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
@@ -283,8 +283,8 @@ function init()
 	ball15.position.set(0,30,352);
 	ball15.rotation.y = turn_angle_y;
 	ball15.rotation.x = turn_angle_x;
-	ball15.castShadow = true;
-	ball15.receiveShadow = true;
+	//ball15.castShadow = true;
+	//ball15.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
@@ -313,8 +313,6 @@ function init()
 	cue_top2.rotation.x = Math.PI / 2;
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
-	
-		
 	
 	scene.add(ball1);
 	scene.add(ball2);
