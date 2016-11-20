@@ -96,7 +96,7 @@ function init()
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	//floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
-	floor.position.set(0,-10,0);
+	floor.position.set(0,-20,0);
 	floor.receiveShadow = true;
 	scene.add(floor);
 	
@@ -165,6 +165,8 @@ function init()
 	ball2.position.set(100,30,0);
 	ball2.rotation.y = turn_angle_y;
 	ball2.rotation.x = turn_angle_x;
+	ball2.castShadow = true;
+	ball2.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/12ball.png' );
@@ -174,6 +176,8 @@ function init()
 	ball3.position.set(-100,30,0);
 	ball3.rotation.y = turn_angle_y;
 	ball3.rotation.x = turn_angle_x;
+	ball3.castShadow = true;
+	ball3.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/11ball.png' );
@@ -183,6 +187,8 @@ function init()
 	ball4.position.set(-200,30,0);
 	ball4.rotation.y = turn_angle_y;
 	ball4.rotation.x = turn_angle_x;
+	ball4.castShadow = true;
+	ball4.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/15ball.png' );
@@ -192,6 +198,8 @@ function init()
 	ball5.position.set(200,30,0);
 	ball5.rotation.y = turn_angle_y;
 	ball5.rotation.x = turn_angle_x;
+	ball5.castShadow = true;
+	ball5.receiveShadow = true;
 		
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/9ball.png' );
@@ -201,6 +209,8 @@ function init()
 	ball6.position.set(50,30,88);
 	ball6.rotation.y = turn_angle_y;
 	ball6.rotation.x = turn_angle_x;
+	ball6.castShadow = true;
+	ball6.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/7ball.png' );
@@ -210,6 +220,8 @@ function init()
 	ball7.position.set(-50,30,88);
 	ball7.rotation.y = turn_angle_y;
 	ball7.rotation.x = turn_angle_x;
+	ball7.castShadow = true;
+	ball7.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/6ball.png' );
@@ -219,6 +231,8 @@ function init()
 	ball8.position.set(-150,30,88);
 	ball8.rotation.y = turn_angle_y;
 	ball8.rotation.x = turn_angle_x;
+	ball8.castShadow = true;
+	ball8.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/10ball.png' );
@@ -228,6 +242,8 @@ function init()
 	ball9.position.set(150,30,88);
 	ball9.rotation.y = turn_angle_y;
 	ball9.rotation.x = turn_angle_x;
+	ball9.castShadow = true;
+	ball9.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/8ball.png' );
@@ -237,6 +253,8 @@ function init()
 	ball10.position.set(0,30,176);
 	ball10.rotation.y = turn_angle_y;
 	ball10.rotation.x = turn_angle_x;
+	ball10.castShadow = true;
+	ball10.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/4ball.png' );
@@ -246,6 +264,8 @@ function init()
 	ball11.position.set(-100,30,176);
 	ball11.rotation.y = turn_angle_y;
 	ball11.rotation.x = turn_angle_x;
+	ball11.castShadow = true;
+	ball11.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/5ball.png' );
@@ -255,6 +275,8 @@ function init()
 	ball12.position.set(100,30,176);
 	ball12.rotation.y = turn_angle_y;
 	ball12.rotation.x = turn_angle_x;
+	ball12.castShadow = true;
+	ball12.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/3ball.png' );
@@ -264,6 +286,8 @@ function init()
 	ball13.position.set(50,30,264);
 	ball13.rotation.y = turn_angle_y;
 	ball13.rotation.x = turn_angle_x;
+	ball13.castShadow = true;
+	ball13.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/2ball.png' );
@@ -273,6 +297,8 @@ function init()
 	ball14.position.set(-50,30,264);
 	ball14.rotation.y = turn_angle_y;
 	ball14.rotation.x = turn_angle_x;
+	ball14.castShadow = true;
+	ball14.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
@@ -282,6 +308,8 @@ function init()
 	ball15.position.set(0,30,352);
 	ball15.rotation.y = turn_angle_y;
 	ball15.rotation.x = turn_angle_x;
+	ball15.castShadow = true;
+	ball15.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
@@ -310,54 +338,7 @@ function init()
 	cue_top2.rotation.x = Math.PI / 2;
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
-	
-	/*
-	ball1.castShadow = true;
-	ball1.receiveShadow = true;
-	
-	ball2.castShadow = true;
-	ball2.receiveShadow = true;
-	
-	ball3.castShadow = true;
-	ball3.receiveShadow = true;
-	
-	ball4.castShadow = true;
-	ball4.receiveShadow = true;
-	
-	ball5.castShadow = true;
-	ball5.receiveShadow = true;
-	
-	ball6.castShadow = true;
-	ball6.receiveShadow = true;
-	
-	ball7.castShadow = true;
-	ball7.receiveShadow = true;
-	
-	ball8.castShadow = true;
-	ball8.receiveShadow = true;
-	
-	ball9.castShadow = true;
-	ball9.receiveShadow = true;
-	
-	ball10.castShadow = true;
-	ball10.receiveShadow = true;
-	
-	ball11.castShadow = true;
-	ball11.receiveShadow = true;
-	
-	ball12.castShadow = true;
-	ball12.receiveShadow = true;
-	
-	ball13.castShadow = true;
-	ball13.receiveShadow = true;
-	
-	ball14.castShadow = true;
-	ball14.receiveShadow = true;
-	
-	ball15.castShadow = true;
-	ball15.receiveShadow = true;
-	
-	*/
+
 	scene.add(ball1);
 	scene.add(ball2);
 	scene.add(ball3);
@@ -418,6 +399,7 @@ function render()
 	mirrorSphereCamera1.updateCubeMap( renderer, scene );
 	mirrorSphere1.visible = true;
 	
+	renderer.shadowMapEnabled = true;	
 	renderer.render( scene, camera );
 }
 
