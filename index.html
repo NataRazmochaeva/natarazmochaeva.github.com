@@ -96,7 +96,7 @@ function init()
 	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
 	//floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
-	floor.position.set(0,-30,0);
+	floor.position.set(0,-10,0);
 	floor.receiveShadow = true;
 	scene.add(floor);
 	
@@ -155,6 +155,7 @@ function init()
 	ball1.rotation.y = turn_angle_y;
 	ball1.rotation.x = turn_angle_x;
 	ball1.castShadow = true;
+	ball1.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
