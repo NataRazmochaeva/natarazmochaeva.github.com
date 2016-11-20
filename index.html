@@ -146,6 +146,7 @@ function init()
 	var turn_angle_y = Math.PI;
 	
 	var geometry,  material;
+	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/13ball.png' );
 	material = new THREE.MeshLambertMaterial( { map: texture } );
@@ -154,6 +155,8 @@ function init()
 	ball1.position.set(0,30,0);
 	ball1.rotation.y = turn_angle_y;
 	ball1.rotation.x = turn_angle_x;
+	ball1.castShadow = true;
+	ball1.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
@@ -280,6 +283,8 @@ function init()
 	ball15.position.set(0,30,352);
 	ball15.rotation.y = turn_angle_y;
 	ball15.rotation.x = turn_angle_x;
+	ball15.castShadow = true;
+	ball15.receiveShadow = true;
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
@@ -309,51 +314,7 @@ function init()
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
 	
-	ball1.castShadow = true;
-	ball2.castShadow = true;
-	ball3.castShadow = true;
-	ball4.castShadow = true;
-	ball5.castShadow = true;
-	ball6.castShadow = true;
-	ball7.castShadow = true;
-	ball8.castShadow = true;
-	ball9.castShadow = true;
-	ball10.castShadow = true;
-	ball11.castShadow = true;
-	ball12.castShadow = true;
-	ball13.castShadow = true;
-	ball14.castShadow = true;
-	ball15.castShadow = true;
-	
-	ball1.receiveShadow = true;
-	ball2.receiveShadow = true;
-	ball3.receiveShadow = true;
-	ball4.receiveShadow = true;
-	ball5.receiveShadow = true;
-	ball6.receiveShadow = true;
-	ball7.receiveShadow = true;
-	ball8.receiveShadow = true;
-	ball9.receiveShadow = true;
-	ball10.receiveShadow = true;
-	ball11.receiveShadow = true;
-	ball12.receiveShadow = true;
-	ball13.receiveShadow = true;
-	ball14.receiveShadow = true;
-	ball15.receiveShadow = true;
-	
-	whiteball.receiveShadow = true;
-	redball.receiveShadow = true;
-	grayball.receiveShadow = true;
-	whiteball.castShadow = true;
-	redball.castShadow = true;
-	grayball.castShadow = true;
-	
-	cue.receiveShadow = true;
-	cue_top1.receiveShadow = true;
-	cue_top2.receiveShadow = true;
-	cue.castShadow = true;
-	cue_top1.castShadow = true;
-	cue_top2.castShadow = true;
+		
 	
 	scene.add(ball1);
 	scene.add(ball2);
