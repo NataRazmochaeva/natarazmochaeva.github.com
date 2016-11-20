@@ -48,6 +48,7 @@ function init()
 {
 	// SCENE
 	scene = new THREE.Scene();
+	
 	// CAMERA
 	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
 	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
@@ -56,6 +57,7 @@ function init()
 	camera.position.set(-300,500,800);
 	camera.rotation.x = Math.PI / 3;
 	camera.lookAt(scene.position);	
+	
 	// RENDERER
 	if ( Detector.webgl )
 		renderer = new THREE.WebGLRenderer( {antialias:true} );
@@ -64,24 +66,30 @@ function init()
 	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
 	container = document.getElementById( 'ThreeJS' );
 	container.appendChild( renderer.domElement );
+	
 	// EVENTS
 	THREEx.WindowResize(renderer, camera);
 	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+	
 	// CONTROLS
 	controls = new THREE.OrbitControls( camera, renderer.domElement );
+	
 	// STATS
 	stats = new Stats();
 	stats.domElement.style.position = 'absolute';
 	stats.domElement.style.bottom = '0px';
 	stats.domElement.style.zIndex = 100;
 	container.appendChild( stats.domElement );
+	
 	// LIGHT
 	var light = new THREE.PointLight(0xffffff);
 	light.position.set(0,700,-500);
 	scene.add(light);
 	var light1 = new THREE.PointLight(0xffffff);
 	light1.position.set(0,1000,300);
+	light1.receiveShadow = true;
 	scene.add(light1);
+	
 	// FLOOR
 	var floorGeometry = new THREE.PlaneGeometry(2000,2000);
 	var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
@@ -95,12 +103,12 @@ function init()
 	// SKYBOX/FOG
 	
 	var materialArray = [];
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xpos.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-xneg.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-ypos.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-yneg.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-zpos.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/dawnmountain-zneg.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/px.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nx.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/py.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/ny.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/pz.png' ) }));
+	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nz.png' ) }));
 	for (var i = 0; i < 6; i++)
 	   materialArray[i].side = THREE.BackSide;
 	var skyboxMaterial = new THREE.MeshFaceMaterial( materialArray );
@@ -307,6 +315,53 @@ function init()
 	cue_top2.rotation.x = Math.PI / 2;
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
+	
+	ball1.castShadow = true;
+	ball2.castShadow = true;
+	ball3.castShadow = true;
+	ball4.castShadow = true;
+	ball5.castShadow = true;
+	ball6.castShadow = true;
+	ball7.castShadow = true;
+	ball8.castShadow = true;
+	ball9.castShadow = true;
+	ball10.castShadow = true;
+	ball11.castShadow = true;
+	ball12.castShadow = true;
+	ball13.castShadow = true;
+	ball14.castShadow = true;
+	ball15.castShadow = true;
+	
+	ball1.receiveShadow = true;
+	ball2.receiveShadow = true;
+	ball3.receiveShadow = true;
+	ball4.receiveShadow = true;
+	ball5.receiveShadow = true;
+	ball6.receiveShadow = true;
+	ball7.receiveShadow = true;
+	ball8.receiveShadow = true;
+	ball9.receiveShadow = true;
+	ball10.receiveShadow = true;
+	ball11.receiveShadow = true;
+	ball12.receiveShadow = true;
+	ball13.receiveShadow = true;
+	ball14.receiveShadow = true;
+	ball15.receiveShadow = true;
+	
+	whiteball.receiveShadow = true;
+	redball.receiveShadow = true;
+	grayball.receiveShadow = true;
+	whiteball.castShadow = true;
+	redball.castShadow = true;
+	grayball.castShadow = true;
+	
+	cue.receiveShadow = true;
+	cue_top1.receiveShadow = true;
+	cue_top2.receiveShadow = true;
+	
+	cue.castShadow = true;
+	cue_top1.castShadow = true;
+	cue_top2.castShadow = true;
 	
 	scene.add(ball1);
 	scene.add(ball2);
