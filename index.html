@@ -99,18 +99,18 @@ function init()
 	
 	var floorGeometry = new THREE.PlaneGeometry(5,5);
 	texture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide  } );
+	material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide, ambiant: 0xffffff } );
 	//var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, material);
 	//floor.position.y = -0.5;
 	floor.rotation.x = Math.PI / 2;
-	floor.position.set(0,0,0);
+	floor.position.set(0,-10,0);
 	floor.receiveShadow = true;
 	scene.add(floor);	
 			
 	//
 	// SKYBOX
-	var skyBoxGeometry = new THREE.CubeGeometry( 5, 5, 5 );
+	var skyBoxGeometry = new THREE.CubeGeometry( 6, 6, 6 );
 	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
 	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
 	scene.add(skyBox);
