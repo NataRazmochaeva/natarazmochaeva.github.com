@@ -138,13 +138,13 @@ function init()
 	*/
 	
 	//bot box
-	var botCubeGeometry = new THREE.CubeGeometry(1.2,0.7,1.2);
+	var botCubeGeometry = new THREE.CubeGeometry(2,2,2);
 	var botCubeMaterial = new THREE.MeshLambertMaterial(
 				{color: 0xff0000});
 	var botCube = new THREE.Mesh(botCubeGeometry, botCubeMaterial);
-	botCube.position.x = -1.7;
-	botCube.position.y = 0;
-	botCube.position.z = 1.5;
+	botCube.position.x = 0;
+	botCube.position.y = 10;
+	botCube.position.z = 0;
 	botCube.castShadow = true;
 	botCube.receiveShadow = true;
 	scene.add(botCube);
