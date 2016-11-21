@@ -46,324 +46,131 @@ animate();
 // FUNCTIONS 		
 function init() 
 {
-	// SCENE
-	scene = new THREE.Scene();
-	
-	// CAMERA
-	var SCREEN_WIDTH = window.innerWidth, SCREEN_HEIGHT = window.innerHeight;
-	var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
-	camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
-	scene.add(camera);
-	camera.position.set(-300,500,800);
-	camera.rotation.x = Math.PI / 3;
-	camera.lookAt(scene.position);	
-	
-	// RENDERER
-	if ( Detector.webgl )
-		renderer = new THREE.WebGLRenderer( {antialias:true} );
-	else
-		renderer = new THREE.CanvasRenderer(); 
-	renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-	container = document.getElementById( 'ThreeJS' );
-	container.appendChild( renderer.domElement );
-	
-	// EVENTS
-	THREEx.WindowResize(renderer, camera);
-	THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
-	
-	// CONTROLS
-	controls = new THREE.OrbitControls( camera, renderer.domElement );
-	
-	// STATS
-	stats = new Stats();
-	stats.domElement.style.position = 'absolute';
-	stats.domElement.style.bottom = '0px';
-	stats.domElement.style.zIndex = 100;
-	container.appendChild( stats.domElement );
-	
-	// LIGHT
-	var light = new THREE.PointLight(0xffffff);
-	light.position.set(0,700,-500);
-	scene.add(light);
-	var light1 = new THREE.PointLight(0xffffff);
-	light1.position.set(0,1000,300);
-	light1.castShadow = true;
-	scene.add(light1);
-	
-	// FLOOR
-	var floorGeometry = new THREE.PlaneGeometry(2000,2000);
-	var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
-	var floor = new THREE.Mesh(floorGeometry, floorMaterial);
-	//floor.position.y = -0.5;
-	floor.rotation.x = Math.PI / 2;
-	floor.position.set(0,-20,0);
-	floor.receiveShadow = true;
-	scene.add(floor);
-	
-	// SKYBOX/FOG
-	
-	var materialArray = [];
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/px.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nx.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/py.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/ny.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/pz.png' ) }));
-	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nz.png' ) }));
-	for (var i = 0; i < 6; i++)
-	   materialArray[i].side = THREE.BackSide;
-	var skyboxMaterial = new THREE.MeshFaceMaterial( materialArray );
-	var skyboxGeom = new THREE.CubeGeometry( 2000, 2000, 2000 );
-	var skybox = new THREE.Mesh( skyboxGeom, skyboxMaterial );
-	scene.add( skybox );	
-
-	////////////
-	// CUSTOM //
-	////////////
-	
-	var sphereGeom =  new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
-	
-	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
-	mirrorSphereCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
-	scene.add( mirrorSphereCamera );
-	texture = new THREE.ImageUtils.loadTexture( 'images/redball.png' );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, map: texture } );
-	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
-	mirrorSphere.position.set(-50,30,-100);
-	mirrorSphereCamera.position = mirrorSphere.position;
-	scene.add(mirrorSphere);
- 
-	mirrorSphereCamera1 = new THREE.CubeCamera( 0.1, 5000, 512 );
-	mirrorSphereCamera1.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
-	scene.add( mirrorSphereCamera1 );
-	texture = new THREE.ImageUtils.loadTexture( 'images/grayball.png' );
-	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, map: texture } );
-	mirrorSphere1 = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
-	mirrorSphere1.position.set(-150,30,-100);
-	mirrorSphereCamera1.position = mirrorSphere1.position;
-	scene.add(mirrorSphere1);
- 
-	var turn_angle_x = -Math.PI / 4;
-	var turn_angle_y = Math.PI;
-	
-	var geometry,  material;
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/13ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball1 = new THREE.Mesh( geometry, material );
-	ball1.metallic = true;
-	ball1.position.set(0,30,0);
-	ball1.rotation.y = turn_angle_y;
-	ball1.rotation.x = turn_angle_x;
-	ball1.castShadow = true;
-	ball1.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball2 = new THREE.Mesh( geometry, material );
-	ball2.metallic = true;
-	ball2.position.set(100,30,0);
-	ball2.rotation.y = turn_angle_y;
-	ball2.rotation.x = turn_angle_x;
-	ball2.castShadow = true;
-	ball2.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/12ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball3 = new THREE.Mesh( geometry, material );
-	ball3.metallic = true;
-	ball3.position.set(-100,30,0);
-	ball3.rotation.y = turn_angle_y;
-	ball3.rotation.x = turn_angle_x;
-	ball3.castShadow = true;
-	ball3.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/11ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	;
-	var ball4 = new THREE.Mesh( geometry, material );
-	ball4.metallic = true;
-	ball4.position.set(-200,30,0);
-	ball4.rotation.y = turn_angle_y;
-	ball4.rotation.x = turn_angle_x;
-	ball4.castShadow = true;
-	ball4.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/15ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball5 = new THREE.Mesh( geometry, material );
-	ball5.metallic = true;
-	ball5.position.set(200,30,0);
-	ball5.rotation.y = turn_angle_y;
-	ball5.rotation.x = turn_angle_x;
-	ball5.castShadow = true;
-	ball5.receiveShadow = true;
+	var scene = new THREE.Scene();
+		var camera = new THREE.PerspectiveCamera( 50, window.innerWidth/window.innerHeight, 0.1, 1000 );
 		
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/9ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball6 = new THREE.Mesh( geometry, material );
-	ball6.metallic = true;
-	ball6.position.set(50,30,88);
-	ball6.rotation.y = turn_angle_y;
-	ball6.rotation.x = turn_angle_x;
-	ball6.castShadow = true;
-	ball6.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/7ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball7 = new THREE.Mesh( geometry, material );
-	ball7.metallic = true;
-	ball7.position.set(-50,30,88);
-	ball7.rotation.y = turn_angle_y;
-	ball7.rotation.x = turn_angle_x;
-	ball7.castShadow = true;
-	ball7.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/6ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball8 = new THREE.Mesh( geometry, material );
-	ball8.metallic = true;
-	ball8.position.set(-150,30,88);
-	ball8.rotation.y = turn_angle_y;
-	ball8.rotation.x = turn_angle_x;
-	ball8.castShadow = true;
-	ball8.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/10ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );	
-	var ball9 = new THREE.Mesh( geometry, material );
-	ball9.metallic = true;
-	ball9.position.set(150,30,88);
-	ball9.rotation.y = turn_angle_y;
-	ball9.rotation.x = turn_angle_x;
-	ball9.castShadow = true;
-	ball9.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/8ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball10 = new THREE.Mesh( geometry, material );
-	ball10.metallic = true;
-	ball10.position.set(0,30,176);
-	ball10.rotation.y = turn_angle_y;
-	ball10.rotation.x = turn_angle_x;
-	ball10.castShadow = true;
-	ball10.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/4ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball11 = new THREE.Mesh( geometry, material );
-	ball11.metallic = true;
-	ball11.position.set(-100,30,176);
-	ball11.rotation.y = turn_angle_y;
-	ball11.rotation.x = turn_angle_x;
-	ball11.castShadow = true;
-	ball11.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/5ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball12 = new THREE.Mesh( geometry, material );
-	ball12.metallic = true;
-	ball12.position.set(100,30,176);
-	ball12.rotation.y = turn_angle_y;
-	ball12.rotation.x = turn_angle_x;
-	ball12.castShadow = true;
-	ball12.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/3ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball13 = new THREE.Mesh( geometry, material );
-	ball13.metallic = true;
-	ball13.position.set(50,30,264);
-	ball13.rotation.y = turn_angle_y;
-	ball13.rotation.x = turn_angle_x;
-	ball13.castShadow = true;
-	ball13.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/2ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball14 = new THREE.Mesh( geometry, material );
-	ball14.metallic = true;
-	ball14.position.set(-50,30,264);
-	ball14.rotation.y = turn_angle_y;
-	ball14.rotation.x = turn_angle_x;
-	ball14.castShadow = true;
-	ball14.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var ball15 = new THREE.Mesh( geometry, material );
-	ball15.metallic = true;
-	ball15.position.set(0,30,352);
-	ball15.rotation.y = turn_angle_y;
-	ball15.rotation.x = turn_angle_x;
-	ball15.castShadow = true;
-	ball15.receiveShadow = true;
-	
-	geometry = new THREE.SphereGeometry( 50, 64, 30  );
-	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
-	var whiteball = new THREE.Mesh( geometry, material );
-	whiteball.metallic = true;
-	whiteball.position.set(-300,30,264);
-		
-	var cylindergeometry = new THREE.CylinderGeometry(5, 8, 500, 512, false);
-	var cylindermaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
-	cue = new THREE.Mesh(cylindergeometry, cylindermaterial);
-	cue.rotation.x = Math.PI / 2;
-	cue.rotation.z = Math.PI / 2;
-	cue.position.set(-50,30,450);
-	
-	cylindergeometry = new THREE.CylinderGeometry(5, 5, 10, 512, false);
-	cylindermaterial = new THREE.MeshLambertMaterial({color: 0x000000});
-	cue_top1 = new THREE.Mesh(cylindergeometry, cylindermaterial);
-	cue_top1.rotation.x = Math.PI / 2;
-	cue_top1.rotation.z = Math.PI / 2;
-	cue_top1.position.set(-305,30,450);
-	
-	cylindergeometry = new THREE.CylinderGeometry(5, 5, 6, 512, false);
-	cylindermaterial = new THREE.MeshLambertMaterial({color: 0x0000ff});
-	cue_top2 = new THREE.Mesh(cylindergeometry, cylindermaterial);
-	cue_top2.rotation.x = Math.PI / 2;
-	cue_top2.rotation.z = Math.PI / 2;
-	cue_top2.position.set(-312,30,450);
+		camera.position.x = -3.0;
+		camera.position.y = 2.5;
+		camera.position.z = 2.7;
+		camera.lookAt(new THREE.Vector3(-0.2, -0.3, 0.2))
 
-	scene.add(ball1);
-	scene.add(ball2);
-	scene.add(ball3);
-	scene.add(ball4);
-	scene.add(ball5);
+		var renderer = new THREE.WebGLRenderer();
+		renderer.setClearColor(0xCCCCCC);
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		//renderer.shadowMapEnabled = true;
+		renderer.shadowMapSoft = true;
+		renderer.shadowMapType = THREE.PCFSoftShadowMap;
+		renderer.shadowMapBias = 0.0001;
+		renderer.shadowMapDarkness = 2;
+		renderer.shadowMapWidth = 4096;
+		renderer.shadowMapHeight = 4096;
+		document.body.appendChild( renderer.domElement );
+		
+		var light = new THREE.DirectionalLight(0xFFFFFF, 1);
+		light.castShadow = true;
+		light.position.set( 0, 3, 4);
+		light.target.position.set( 0, 0.5, 0);		
+		scene.add(light);
+		
+		var plight = new THREE.PointLight( 0xffffff, 0.4);
+		plight.position.set( -5, 1, 0 );
+		scene.add( plight );
+		
+		//var floorT = new THREE.TextureLoader('/images/floor.jpg');
 	
-	scene.add(ball6);
-	scene.add(ball7);
-	scene.add(ball8);
-	scene.add(ball9);
-	
-	scene.add(ball10);
-	scene.add(ball11);
-	scene.add(ball12);
-	
-	scene.add(ball13);
-	scene.add(ball14);
-	
-	scene.add(ball15);
-	
-	scene.add(whiteball);
-	scene.add(cue);
-	scene.add(cue_top1);
-	scene.add(cue_top2);
-	
+		var planeGeometry = new THREE.PlaneGeometry(200,200);
+		
+		//var loader = new THREE.TextureLoader();
+		//loader.needsUpdate = true;
+		var texture = new THREE.ImageUtils.loadTexture('/images/checkerboard.png');
+		var planeMaterial = new THREE.MeshLambertMaterial(
+						{map: texture});			
+		var plane = new THREE.Mesh(planeGeometry,planeMaterial);			
+		scene.add(plane);
+					
+		plane.rotation.x = -Math.PI/2;
+		plane.position.x = 0;
+		plane.position.y = 0;
+		plane.position.z = 0;
+		plane.receiveShadow = true;
+		//bot box
+		var botCubeGeometry = new THREE.CubeGeometry(1.2,0.7,1.2);
+		var botCubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
+		var botCube = new THREE.Mesh(botCubeGeometry, botCubeMaterial);
+		botCube.position.x = -1.7;
+		botCube.position.y = 0;
+		botCube.position.z = 1.5;
+		botCube.castShadow = true;
+		botCube.receiveShadow = true;
+		scene.add(botCube);
+		
+		//top box
+		var topCubeGeometry = new THREE.CubeGeometry(1.1,0.6,1.1);
+		var topCubeMaterial = new THREE.MeshLambertMaterial(
+					{color: 0x0FF000});
+		var topCube = new THREE.Mesh(topCubeGeometry, topCubeMaterial);
+		topCube.position.x = -0.15;
+		topCube.position.y = 0.9;
+		topCube.position.z = 0.15;
+		topCube.castShadow = true;
+		topCube.receiveShadow = true;
+		scene.add(topCube);
+		
+		//HBOX						
+		var hx = -0.1;
+		var hy = 0;
+		var hz = 1.9;
+		for(i = 0; i < 11; i++){
+			var HCubeGeometry = new THREE.CubeGeometry(1.7,0.02,0.02);
+			var HCubeMaterial = new THREE.MeshLambertMaterial(
+					{color: 0xFF0000});
+			var HCube = new THREE.Mesh(HCubeGeometry, HCubeMaterial);
+			HCube.position.x = hx;
+			HCube.position.y = hy+i*0.17;
+			HCube.position.z = hz;
+			HCube.castShadow = true;
+			HCube.receiveShadow = true;
+			scene.add(HCube);
+		}
+		//VBOX
+		for(i = 0; i < 11; i++){
+			var VCubeGeometry = new THREE.CubeGeometry(0.02,1.7,0.02);
+			var VCubeMaterial = new THREE.MeshLambertMaterial(
+					{color: 0xFF0000});
+			var VCube = new THREE.Mesh(VCubeGeometry, VCubeMaterial);
+			VCube.position.x = hx-1.7/2+i*0.17;
+			VCube.position.y = hy+1.7/2;
+			VCube.position.z = hz;	
+			VCube.castShadow = true;
+			VCube.receiveShadow = true;
+			scene.add(VCube);
+		}
+		
+		//solidcyl
+		var solCylGeometry = new THREE.CylinderGeometry(0.55,0.55,0.9,16,1);
+		var solCylMaterial = new THREE.MeshLambertMaterial(
+					{color: 0xFFFFFF});
+		var solCyl = new THREE.Mesh(solCylGeometry, solCylMaterial);
+		solCyl.position.x = -0.15;
+		solCyl.position.y = 0.45;
+		solCyl.position.z = 0.15;
+		solCyl.castShadow = true;
+		solCyl.receiveShadow = true;
+		scene.add(solCyl);
+		
+		//largecellcyl
+		var torGeometry = new THREE.TorusKnotGeometry(0.6,0.05,300,32,3,4);
+		var torMaterial = new THREE.MeshPhongMaterial(
+					{color: 0x00BB00});
+		var torCyl = new THREE.Mesh(torGeometry, torMaterial);
+		torCyl.position.x = -1.9;
+		torCyl.position.y = 0.9;
+		torCyl.position.z = -0.2;
+		torCyl.castShadow = true;
+		torCyl.receiveShadow = true;
+		scene.add(torCyl);
+		
+		renderer.render(scene, camera);
 }
 
 function animate() 
