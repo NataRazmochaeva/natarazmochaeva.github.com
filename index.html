@@ -118,7 +118,7 @@ function init()
 	////////////
 	// CUSTOM //
 	////////////
-	
+	/*
 	var geometry = new THREE.SphereGeometry( 30, 30, 30 );
 	var material = new THREE.MeshPhongMaterial( { color: 0x999988 } );
 	ball1 = new THREE.Mesh( geometry, material );
@@ -135,7 +135,19 @@ function init()
 	ball2.castShadow = true;
 	ball1.receiveShadow = true;
 	ball2.receiveShadow = true;
+	*/
 	
+	//bot box
+	var botCubeGeometry = new THREE.CubeGeometry(1.2,0.7,1.2);
+	var botCubeMaterial = new THREE.MeshLambertMaterial(
+				{color: 0xff0000});
+	var botCube = new THREE.Mesh(botCubeGeometry, botCubeMaterial);
+	botCube.position.x = -1.7;
+	botCube.position.y = 0;
+	botCube.position.z = 1.5;
+	botCube.castShadow = true;
+	botCube.receiveShadow = true;
+	scene.add(botCube);
 	
 	scene.add(ball1);
 	scene.add(ball2);
