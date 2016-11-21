@@ -87,7 +87,7 @@ function init()
 	scene.add(light);
 	var light1 = new THREE.PointLight(0xffffff);
 	light1.position.set(0,1000,300);
-	light1.receiveShadow = true;
+	light1.castShadow = true;
 	scene.add(light1);
 	
 	// FLOOR
