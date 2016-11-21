@@ -98,8 +98,8 @@ function init()
 	// FLOOR
 	
 	var floorGeometry = new THREE.PlaneGeometry(500,500);
-	texture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.png' );
-	material = new THREE.MeshLambertMaterial( { map: texture } );
+	texture = new THREE.ImageUtils.loadTexture( 'images/floor.png' );
+	material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide  } );
 	//var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, material);
 	//floor.position.y = -0.5;
