@@ -91,14 +91,14 @@ function init()
 	container.appendChild( stats.domElement );
 	// LIGHT
 	//var light = new THREE.PointLight(0xffffff);
-	var light = new THREE.SpotLight( 0xffffff );
-	light.position.set(200,200,200);
+	var light = new THREE.PointLight( 0xffffff );
+	light.position.set(20,20,20);
 	light.castShadow = true;
 	scene.add(light);
 	// FLOOR
 	
 	var floorGeometry = new THREE.PlaneGeometry(500,500);
-	texture = new THREE.ImageUtils.loadTexture( 'images/floor.png' );
+	texture = new THREE.ImageUtils.loadTexture( 'images/checkerboard.png' );
 	material = new THREE.MeshLambertMaterial( { map: texture, side: THREE.DoubleSide  } );
 	//var floorMaterial = new THREE.MeshBasicMaterial({color: 0x009933, side: THREE.DoubleSide});
 	var floor = new THREE.Mesh(floorGeometry, material);
@@ -110,7 +110,7 @@ function init()
 			
 	//
 	// SKYBOX
-	var skyBoxGeometry = new THREE.CubeGeometry( 50, 50, 50 );
+	var skyBoxGeometry = new THREE.CubeGeometry( 5, 5, 5 );
 	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
 	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
 	scene.add(skyBox);
