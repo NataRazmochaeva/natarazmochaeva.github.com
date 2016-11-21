@@ -110,7 +110,7 @@ function init()
 			
 	//
 	// SKYBOX
-	var skyBoxGeometry = new THREE.CubeGeometry( 10000, 10000, 10000 );
+	var skyBoxGeometry = new THREE.CubeGeometry( 50, 50, 50 );
 	var skyBoxMaterial = new THREE.MeshBasicMaterial( { color: 0x9999ff, side: THREE.BackSide } );
 	var skyBox = new THREE.Mesh( skyBoxGeometry, skyBoxMaterial );
 	scene.add(skyBox);
@@ -138,13 +138,13 @@ function init()
 	*/
 	
 	//bot box
-	var botCubeGeometry = new THREE.CubeGeometry(2,2,2);
+	var botCubeGeometry = new THREE.CubeGeometry(1.2,0.7,1.2);
 	var botCubeMaterial = new THREE.MeshLambertMaterial(
 				{color: 0xff0000});
 	var botCube = new THREE.Mesh(botCubeGeometry, botCubeMaterial);
-	botCube.position.x = 0;
-	botCube.position.y = 10;
-	botCube.position.z = 0;
+	botCube.position.x = -1.7;
+	botCube.position.y = 0;
+	botCube.position.z = 1.5;
 	botCube.castShadow = true;
 	botCube.receiveShadow = true;
 	scene.add(botCube);
@@ -152,6 +152,72 @@ function init()
 	scene.add(ball1);
 	scene.add(ball2);
 	
+	//top box
+	var topCubeGeometry = new THREE.CubeGeometry(1.1,0.6,1.1);
+	var topCubeMaterial = new THREE.MeshLambertMaterial( {color: 0x0FF000});
+	var topCube = new THREE.Mesh(topCubeGeometry, topCubeMaterial);
+	topCube.position.x = -0.15;
+	topCube.position.y = 0.9;
+	topCube.position.z = 0.15;
+	topCube.castShadow = true;
+	topCube.receiveShadow = true;
+	scene.add(topCube);
+	
+	//HBOX						
+	var hx = -0.1;
+	var hy = 0;
+	var hz = 1.9;
+	for(i = 0; i < 11; i++){
+		var HCubeGeometry = new THREE.CubeGeometry(1.7,0.02,0.02);
+		var HCubeMaterial = new THREE.MeshLambertMaterial(
+				{color: 0xFF0000});
+		var HCube = new THREE.Mesh(HCubeGeometry, HCubeMaterial);
+		HCube.position.x = hx;
+		HCube.position.y = hy+i*0.17;
+		HCube.position.z = hz;
+		HCube.castShadow = true;
+		HCube.receiveShadow = true;
+		scene.add(HCube);
+	}
+	//VBOX
+	for(i = 0; i < 11; i++){
+		var VCubeGeometry = new THREE.CubeGeometry(0.02,1.7,0.02);
+		var VCubeMaterial = new THREE.MeshLambertMaterial(
+				{color: 0xFF0000});
+		var VCube = new THREE.Mesh(VCubeGeometry, VCubeMaterial);
+		VCube.position.x = hx-1.7/2+i*0.17;
+		VCube.position.y = hy+1.7/2;
+		VCube.position.z = hz;	
+		VCube.castShadow = true;
+		VCube.receiveShadow = true;
+		scene.add(VCube);
+	}
+	
+	//solidcyl
+	var solCylGeometry = new THREE.CylinderGeometry(0.55,0.55,0.9,16,1);
+	var solCylMaterial = new THREE.MeshLambertMaterial(
+				{color: 0xFFFFFF});
+	var solCyl = new THREE.Mesh(solCylGeometry, solCylMaterial);
+	solCyl.position.x = -0.15;
+	solCyl.position.y = 0.45;
+	solCyl.position.z = 0.15;
+	solCyl.castShadow = true;
+	solCyl.receiveShadow = true;
+	scene.add(solCyl);
+	
+	//largecellcyl
+	var torGeometry = new THREE.TorusKnotGeometry(0.6,0.05,300,32,3,4);
+	var torMaterial = new THREE.MeshPhongMaterial(
+				{color: 0x00BB00});
+	var torCyl = new THREE.Mesh(torGeometry, torMaterial);
+	torCyl.position.x = -1.9;
+	torCyl.position.y = 0.9;
+	torCyl.position.z = -0.2;
+	torCyl.castShadow = true;
+	torCyl.receiveShadow = true;
+	scene.add(torCyl);
+	
+	renderer.render(scene, camera);
 }
 
 function animate() 
