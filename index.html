@@ -76,6 +76,21 @@ function init()
 		plight.position.set( -5, 1, 0 );
 		scene.add( plight );
 		
+		var materialArray = [];
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/px.png' ) }));
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nx.png' ) }));
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/py.png' ) }));
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/ny.png' ) }));
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/pz.png' ) }));
+		materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nz.png' ) }));
+		for (var i = 0; i < 6; i++)
+		   materialArray[i].side = THREE.BackSide;
+		var skyboxMaterial = new THREE.MeshFaceMaterial( materialArray );
+		var skyboxGeom = new THREE.CubeGeometry( 2000, 2000, 2000 );
+		var skybox = new THREE.Mesh( skyboxGeom, skyboxMaterial );
+		scene.add( skybox );
+		
+		
 		//var floorT = new THREE.TextureLoader('/images/floor.jpg');
 	
 		var planeGeometry = new THREE.PlaneGeometry(200,200);
