@@ -385,11 +385,11 @@ function render()
 	mirrorSphere.visible = false;
 	mirrorSphereCamera.updateCubeMap( renderer, scene );
 	mirrorSphere.visible = true;
-/*
+
 	mirrorSphere1.visible = false;
 	mirrorSphereCamera1.updateCubeMap( renderer, scene );
 	mirrorSphere1.visible = true;
-	*/
+
 	renderer.shadowMapEnabled = true;	
 	renderer.render( scene, camera );
 }
