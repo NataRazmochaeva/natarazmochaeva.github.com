@@ -21,12 +21,16 @@
 <script src="js/jquery-ui.js"></script>
 <link rel=stylesheet href="css/jquery-ui.css" />
 <link rel=stylesheet href="css/info.css"/>
+<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
 <script>
+
 // MAIN
+
 // standard global variables
 var container, scene, camera, renderer, controls, stats;
 var keyboard = new THREEx.KeyboardState();
 var clock = new THREE.Clock();
+
 // custom global variables
 var mirrorSphere, mirrorSphereCamera; // for mirror material
 var mirrorSphere1, mirrorSphereCamera1; // for mirror material
