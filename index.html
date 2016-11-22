@@ -119,23 +119,25 @@ function init()
 	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera );
+	
 	texture = new THREE.ImageUtils.loadTexture( 'images/redball.png' );
 	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera.renderTarget, map: texture } );
 	mirrorSphere = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere.position.set(-50,30,-100);
 	mirrorSphereCamera.position = mirrorSphere.position;
 	scene.add(mirrorSphere);
- /*
+
 	mirrorSphereCamera1 = new THREE.CubeCamera( 0.1, 5000, 512 );
 	mirrorSphereCamera1.renderTarget.minFilter = THREE.LinearMipMapLinearFilter;
 	scene.add( mirrorSphereCamera1 );
+	
 	texture = new THREE.ImageUtils.loadTexture( 'images/grayball.png' );
 	var mirrorSphereMaterial = new THREE.MeshBasicMaterial( { envMap: mirrorSphereCamera1.renderTarget, map: texture } );
 	mirrorSphere1 = new THREE.Mesh( sphereGeom, mirrorSphereMaterial );
 	mirrorSphere1.position.set(-150,30,-100);
 	mirrorSphereCamera1.position = mirrorSphere1.position;
 	scene.add(mirrorSphere1);
- 
+  /*
 	var turn_angle_x = -Math.PI / 4;
 	var turn_angle_y = Math.PI;
 	
