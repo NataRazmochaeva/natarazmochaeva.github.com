@@ -12,6 +12,7 @@
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
 <script src="js/OrbitControls.js"></script>
+<script src="js/THREEx.KeyboardState.js"></script>
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
 
@@ -27,6 +28,8 @@
 
 // standard global variables
 var container, scene, camera, renderer, controls, stats;
+var keyboard = new THREEx.KeyboardState();
+var clock = new THREE.Clock();
 
 // custom global variables
 var mirrorSphere, mirrorSphereCamera; // for mirror material
@@ -147,6 +150,7 @@ function init()
 	ball1.rotation.x = turn_angle_x;
 	ball1.castShadow = true;
 	ball1.receiveShadow = true;
+	scene.add(ball1);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/14ball.png' );
@@ -158,6 +162,7 @@ function init()
 	ball2.rotation.x = turn_angle_x;
 	ball2.castShadow = true;
 	ball2.receiveShadow = true;
+	scene.add(ball2);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/12ball.png' );
@@ -169,6 +174,7 @@ function init()
 	ball3.rotation.x = turn_angle_x;
 	ball3.castShadow = true;
 	ball3.receiveShadow = true;
+	scene.add(ball3);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/11ball.png' );
@@ -180,6 +186,7 @@ function init()
 	ball4.rotation.x = turn_angle_x;
 	ball4.castShadow = true;
 	ball4.receiveShadow = true;
+	scene.add(ball4);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/15ball.png' );
@@ -191,6 +198,7 @@ function init()
 	ball5.rotation.x = turn_angle_x;
 	ball5.castShadow = true;
 	ball5.receiveShadow = true;
+	scene.add(ball5);
 		
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/9ball.png' );
@@ -202,6 +210,7 @@ function init()
 	ball6.rotation.x = turn_angle_x;
 	ball6.castShadow = true;
 	ball6.receiveShadow = true;
+	scene.add(ball6);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/7ball.png' );
@@ -213,6 +222,7 @@ function init()
 	ball7.rotation.x = turn_angle_x;
 	ball7.castShadow = true;
 	ball7.receiveShadow = true;
+	scene.add(ball7);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/6ball.png' );
@@ -224,6 +234,7 @@ function init()
 	ball8.rotation.x = turn_angle_x;
 	ball8.castShadow = true;
 	ball8.receiveShadow = true;
+	scene.add(ball8);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/10ball.png' );
@@ -235,6 +246,7 @@ function init()
 	ball9.rotation.x = turn_angle_x;
 	ball9.castShadow = true;
 	ball9.receiveShadow = true;
+	scene.add(ball9);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/8ball.png' );
@@ -246,6 +258,7 @@ function init()
 	ball10.rotation.x = turn_angle_x;
 	ball10.castShadow = true;
 	ball10.receiveShadow = true;
+	scene.add(ball10);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/4ball.png' );
@@ -257,6 +270,7 @@ function init()
 	ball11.rotation.x = turn_angle_x;
 	ball11.castShadow = true;
 	ball11.receiveShadow = true;
+	scene.add(ball11);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/5ball.png' );
@@ -268,6 +282,8 @@ function init()
 	ball12.rotation.x = turn_angle_x;
 	ball12.castShadow = true;
 	ball12.receiveShadow = true;
+	scene.add(ball12);
+	
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/3ball.png' );
@@ -279,6 +295,7 @@ function init()
 	ball13.rotation.x = turn_angle_x;
 	ball13.castShadow = true;
 	ball13.receiveShadow = true;
+	scene.add(ball13);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/2ball.png' );
@@ -290,6 +307,7 @@ function init()
 	ball14.rotation.x = turn_angle_x;
 	ball14.castShadow = true;
 	ball14.receiveShadow = true;
+	scene.add(ball14);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/1ball.png' );
@@ -301,6 +319,7 @@ function init()
 	ball15.rotation.x = turn_angle_x;
 	ball15.castShadow = true;
 	ball15.receiveShadow = true;
+	scene.add(ball15);
 	
 	geometry = new THREE.SphereGeometry( 50, 64, 30  );
 	texture = new THREE.ImageUtils.loadTexture( 'images/whiteball.png' );
@@ -308,13 +327,15 @@ function init()
 	var whiteball = new THREE.Mesh( geometry, material );
 	whiteball.metallic = true;
 	whiteball.position.set(-300,30,264);
-		
+	scene.add(whiteball);
+	
 	var cylindergeometry = new THREE.CylinderGeometry(5, 8, 500, 512, false);
 	var cylindermaterial = new THREE.MeshLambertMaterial({color: 0xffffff});
 	cue = new THREE.Mesh(cylindergeometry, cylindermaterial);
 	cue.rotation.x = Math.PI / 2;
 	cue.rotation.z = Math.PI / 2;
 	cue.position.set(-50,30,450);
+	scene.add(cue);
 	
 	cylindergeometry = new THREE.CylinderGeometry(5, 5, 10, 512, false);
 	cylindermaterial = new THREE.MeshLambertMaterial({color: 0x000000});
@@ -322,6 +343,7 @@ function init()
 	cue_top1.rotation.x = Math.PI / 2;
 	cue_top1.rotation.z = Math.PI / 2;
 	cue_top1.position.set(-305,30,450);
+	scene.add(cue_top1);
 	
 	cylindergeometry = new THREE.CylinderGeometry(5, 5, 6, 512, false);
 	cylindermaterial = new THREE.MeshLambertMaterial({color: 0x0000ff});
@@ -329,30 +351,6 @@ function init()
 	cue_top2.rotation.x = Math.PI / 2;
 	cue_top2.rotation.z = Math.PI / 2;
 	cue_top2.position.set(-312,30,450);
-
-	scene.add(ball1);
-	scene.add(ball2);
-	scene.add(ball3);
-	scene.add(ball4);
-	scene.add(ball5);
-	
-	scene.add(ball6);
-	scene.add(ball7);
-	scene.add(ball8);
-	scene.add(ball9);
-	
-	scene.add(ball10);
-	scene.add(ball11);
-	scene.add(ball12);
-	
-	scene.add(ball13);
-	scene.add(ball14);
-	
-	scene.add(ball15);
-	
-	scene.add(whiteball);
-	scene.add(cue);
-	scene.add(cue_top1);
 	scene.add(cue_top2);
 	*/
 }
@@ -366,6 +364,11 @@ function animate()
 
 function update()
 {
+	if ( keyboard.pressed("z") ) 
+	{ 
+		// do something
+	}
+	
 	controls.update();
 	stats.update();
 }
@@ -377,11 +380,10 @@ function render()
 	//    and apply it to the surface.
 	// need to hide surface before and after so that it does not
 	//    "get in the way" of the camera
-	/*
 	mirrorSphere.visible = false;
 	mirrorSphereCamera.updateCubeMap( renderer, scene );
 	mirrorSphere.visible = true;
-
+/*
 	mirrorSphere1.visible = false;
 	mirrorSphereCamera1.updateCubeMap( renderer, scene );
 	mirrorSphere1.visible = true;
