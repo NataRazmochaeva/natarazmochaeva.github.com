@@ -96,7 +96,6 @@ function init()
 	scene.add(floor);
 	
 	// SKYBOX/FOG
-	
 	var materialArray = [];
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/px.png' ) }));
 	materialArray.push(new THREE.MeshBasicMaterial( { map: THREE.ImageUtils.loadTexture( 'images/nx.png' ) }));
@@ -114,7 +113,7 @@ function init()
 	////////////
 	// CUSTOM //
 	////////////
-	
+	/*
 	var sphereGeom =  new THREE.SphereGeometry( 50, 32, 16 ); // radius, segmentsWidth, segmentsHeight
 	
 	mirrorSphereCamera = new THREE.CubeCamera( 0.1, 5000, 512 );
@@ -358,7 +357,7 @@ function init()
 	scene.add(cue);
 	scene.add(cue_top1);
 	scene.add(cue_top2);
-	
+	*/
 }
 
 function animate() 
