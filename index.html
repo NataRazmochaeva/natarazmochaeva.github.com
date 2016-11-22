@@ -12,7 +12,6 @@
 <script src="js/Detector.js"></script>
 <script src="js/Stats.js"></script>
 <script src="js/OrbitControls.js"></script>
-<script src="js/THREEx.KeyboardState.js"></script>
 <script src="js/THREEx.FullScreen.js"></script>
 <script src="js/THREEx.WindowResize.js"></script>
 
@@ -28,8 +27,6 @@
 
 // standard global variables
 var container, scene, camera, renderer, controls, stats;
-var keyboard = new THREEx.KeyboardState();
-var clock = new THREE.Clock();
 
 // custom global variables
 var mirrorSphere, mirrorSphereCamera; // for mirror material
@@ -369,11 +366,6 @@ function animate()
 
 function update()
 {
-	if ( keyboard.pressed("z") ) 
-	{ 
-		// do something
-	}
-	
 	controls.update();
 	stats.update();
 }
